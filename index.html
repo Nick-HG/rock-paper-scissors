@@ -8,20 +8,41 @@
 </head>
 <body>
     <script>
-        console.log("Hello world")
-        //FIRST ATTEMPT
-        // function getComputerChoice() {
-        //     let gameArray = ["rock", "paper", "scissors"];
-        // }
-        // let randomString = Math.floor(Math.random()*gameArray);
-        // console.log(getComputerChoice);
-
-        // SECOND ATTEMPT
+        //Return 'rock', 'paper', or 'scissors' at random from array upon execution
+        const items = ["rock", "paper", "scissors"];
+        
         function getComputerChoice() {
-            let items = Array("rock", "paper", "scissors");
-            let item = items[Math.floor(Math.random()*items.length)]; //no .length returns undefined
-            return item;
+            return items[Math.floor(Math.random()*items.length)]; //no .length returns undefined
         }
+        
+        function playRound(playerSelection, computerSelection) {
+            //TIES
+            if (playerSelection === "rock" && computerSelection === "rock") {
+                return "It's a tie! You both chose rock";
+            } else if (playerSelection === "scissors" && computerSelection === "scissors") {
+                return "It's a tie! You both chose scissors";
+            } else if (playerSelection === "paper" && computerSelection === "paper") {
+                return "It's a tie! You both chose paper";
+            //PLAYER WINS
+            } else if (playerSelection === "rock" && computerSelection === "scissors") {
+                return alert("You win! Rock blunts scissors");
+            } else if (playerSelection === "paper" && computerSelection === "rock") {
+                return alert("You win! Paper covers rock");
+            } else if (playerSelection === "scissors" && computerSelection === "paper") {
+                return alert("You win! Scissors slice paper");
+            // COMPUTER WINS
+            } else if (playerSelection === "scissors" && computerSelection === "rock") {
+                return alert("You lose! Scissors cannot slice rock");
+            } else if (playerSelection === "paper" && computerSelection === "scissors") {
+                return alert("You lose! Paper is cut by scissors");
+            } else if (playerSelection === "rock" && computerSelection === "paper") {
+                return alert("You lose! Rock is covered by paper");
+            }
+        }  
+
+        const playerSelection = "rock";
+        const computerSelection = getComputerChoice();
+        console.log(playRound(playerSelection, computerSelection));
     </script>
 </body>
 </html>
