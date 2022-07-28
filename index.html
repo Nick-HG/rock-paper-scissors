@@ -48,9 +48,22 @@
             }
         }  
 
-        const playerSelection = "rock";
-        const computerSelection = getComputerChoice();
-        console.log(playRound(playerSelection, computerSelection));
+        function game() {
+            for (let i = 0; i < 5; i++) {
+                const playerSelection = prompt("Choose your hand").toLowerCase();
+                const computerSelection = getComputerChoice();
+                console.log(playRound(playerSelection, computerSelection));
+            }
+            if (playerScore > computerScore) {
+                    return "Congratulations! You beat the computer";
+                } else if (playerScore < computerScore) {
+                    return "Unlucky this time, the computer beat you";
+                } else if (playerScore === computerScore) {
+                    return "You tied with the computer";
+                }
+        }
+
+        console.log(game());
 
     </script>
 </body>
