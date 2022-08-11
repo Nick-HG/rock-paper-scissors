@@ -8,15 +8,17 @@
 </head>
 <body>
     <script>
-        //Return 'rock', 'paper', or 'scissors' at random from array upon execution
+        //Initial score tracker - playerScore++ and computerScore++ in playRound function will increment scores after each round completion
         let playerScore = 0
         let computerScore = 0
        
+        //Return 'rock', 'paper', or 'scissors' at random from array upon execution
         function getComputerChoice() {
             const items = ["rock", "paper", "scissors"];
-            return items[Math.floor(Math.random()*items.length)]; //no .length returns undefined
+            return items[Math.floor(Math.random()*items.length)]; //.length specifies to include all items from array
         }
         
+        //Create function of potential round outcomes and their respective return messages
         function playRound(playerSelection, computerSelection) {
             //TIES
             if (playerSelection === "rock" && computerSelection === "rock") {
@@ -48,6 +50,7 @@
             }
         }  
 
+        //Create function to initialise game loop with user input and call the arguments from playRound & getComputerChoice functions
         function game() {
             for (let i = 0; i < 5; i++) {
                 const playerSelection = prompt("Choose your hand").toLowerCase();
