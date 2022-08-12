@@ -4,70 +4,47 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <script src="rps.js" defer></script>
+    <title>Rock Paper Scissors</title>
 </head>
-<body>
-    <script>
-        //Initial score tracker - playerScore++ and computerScore++ in playRound function will increment scores after each round completion
-        let playerScore = 0
-        let computerScore = 0
-       
-        //Return 'rock', 'paper', or 'scissors' at random from array upon execution
-        function getComputerChoice() {
-            const items = ["rock", "paper", "scissors"];
-            return items[Math.floor(Math.random()*items.length)]; //.length specifies to include all items from array
-        }
+<body style="text-align: center;">
+
+    <header class="title">
+        <h1>Rock Paper Scissor</h1>
+    </header>
+
+    <main>
+        <!--Display score of player & computer-->
+        <div class="score" style="display: flex; justify-content: space-evenly;">
+            <div class="playerScore">
+                <h2>Player</h2>
+                <p class="p-count count">0</p>
+            </div>
+            <div class="computerScore">
+                <h2>Computer</h2>
+                <p class="c-count count">0</p>
+            </div>
+        </div>
+
+        <div class="move">Choose your hand</div>
+        <br>
+        <!--No of moves left before game ends-->
+        <div class="moves-left">Moves left: 5</div>
+        <br>
         
-        //Create function of potential round outcomes and their respective return messages
-        function playRound(playerSelection, computerSelection) {
-            //TIES
-            if (playerSelection === "rock" && computerSelection === "rock") {
-                return "It's a tie! You both chose rock";
-            } else if (playerSelection === "scissors" && computerSelection === "scissors") {
-                return "It's a tie! You both chose scissors";
-            } else if (playerSelection === "paper" && computerSelection === "paper") {
-                return "It's a tie! You both chose paper";
-            //PLAYER WINS
-            } else if (playerSelection === "rock" && computerSelection === "scissors") {
-                playerScore++
-                return ("You win! Rock blunts scissors");
-            } else if (playerSelection === "paper" && computerSelection === "rock") {
-                playerScore++
-                return ("You win! Paper covers rock");
-            } else if (playerSelection === "scissors" && computerSelection === "paper") {
-                playerScore++
-                return ("You win! Scissors slice paper");
-            // COMPUTER WINS
-            } else if (playerSelection === "scissors" && computerSelection === "rock") {
-                computerScore++
-                return ("You lose! Scissors cannot slice rock");
-            } else if (playerSelection === "paper" && computerSelection === "scissors") {
-                computerScore++
-                return ("You lose! Paper is cut by scissors");
-            } else if (playerSelection === "rock" && computerSelection === "paper") {
-                computerScore++
-                return ("You lose! Rock is covered by paper");
-            }
-        }  
+        <!--Options available to the player-->
+        <div class="options">
+            <button id="rock">Rock</button>
+            <button id="paper">Paper</button>
+            <button id="scissors">Scissors</button>
+        </div>
+        <br>
+        <!--Final result-->
+        <div class="result"></div>
+        <br>
+        <!--Reload the game-->
+        <button class="restart">Restart</button>
+    </main>
 
-        //Create function to initialise game loop with user input and call the arguments from playRound & getComputerChoice functions
-        function game() {
-            for (let i = 0; i < 5; i++) {
-                const playerSelection = prompt("Choose your hand").toLowerCase();
-                const computerSelection = getComputerChoice();
-                console.log(playRound(playerSelection, computerSelection));
-            }
-            if (playerScore > computerScore) {
-                    return "Congratulations! You beat the computer";
-                } else if (playerScore < computerScore) {
-                    return "Unlucky this time, the computer beat you";
-                } else if (playerScore === computerScore) {
-                    return "You tied with the computer";
-                }
-        }
-
-        console.log(game());
-
-    </script>
 </body>
 </html>
